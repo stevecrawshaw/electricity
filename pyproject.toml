@@ -1,7 +1,7 @@
 [project]
-name = "vs-code-setup"
+name = "electricity"
 version = "0.1.0"
-description = "Add your description here"
+description = "Analysis for the distribution of electricity"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
