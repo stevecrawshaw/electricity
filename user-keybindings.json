@@ -1,0 +1,63 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+shift+f10",
+        "command": "jupyter.notebookeditor.restartkernel"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "workbench.action.terminal.runSelectedText",
+        "when": "editorTextFocus && editorLangId == sql"
+    },
+    // keybindings for R scripts. 
+    {
+        "key": "Ctrl+Shift+m",
+        "command": "type",
+        "args": {
+            "text": " |>"
+        },
+        "when": "editorTextFocus && editorLangId == r"
+    },
+    {
+        "key": "Alt+-",
+        "command": "type",
+        "args": {
+            "text": " <- "
+        },
+        "when": "editorTextFocus && editorLangId == r"
+    },
+    // keybindings for Rmarkdown
+    {
+        "key": "Ctrl+Shift+m",
+        "command": "type",
+        "args": {
+            "text": " |>"
+        },
+        "when": "editorTextFocus && editorLangId == rmd"
+    },
+    {
+        "key": "Alt+-",
+        "command": "type",
+        "args": {
+            "text": " <- "
+        },
+        "when": "editorTextFocus && editorLangId == rmd"
+    },
+    // keybindings for R terminal (radian included)
+    {
+        "key": "Ctrl+Shift+m",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": " |>"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "Alt+-",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": " <- "
+        },
+        "when": "terminalFocus"
+    }
+]
