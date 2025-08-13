@@ -11,12 +11,12 @@ DESCRIBE repd_tbl;
 CREATE OR REPLACE TABLE weca_rep_tbl AS 
 SELECT 
 site_name
-,STRPTIME(operational, '%d/%m/%Y')::DATE AS operational_date
-,EXTRACT(YEAR FROM STRPTIME(operational, '%d/%m/%Y')::DATE) AS year
+,strptime(operational, '%d/%m/%Y')::DATE AS operational_date
+,extract(YEAR FROM operational_date) AS year
 ,record_last_updated_ddmmyyyy
 ,technology_type
 ,storage_type
-,installed_capacity_mwelec::INT installed_capacity_mwelec
+,installed_capacity_mwelec::FLOAT installed_capacity_mwelec
 ,share_community_scheme
 ,development_status
 ,planning_authority
@@ -34,9 +34,11 @@ WHERE
     development_status_short = 'Operational';
 
 
+SET VARIABLE start_year = (SELECT MAX("year") - 5 FROM weca_rep_tbl);
+
+SELECT getvariable('start_year');
+
 SELECT 
-"year",
 SUM(installed_capacity_mwelec) capacity_added
 FROM weca_rep_tbl
-GROUP BY "year"
-ORDER BY "year";
+WHERE year >= getvariable('start_year');
